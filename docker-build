@@ -1,0 +1,52 @@
+#!/usr/bin/env php
+<?php
+
+require_once __DIR__ . '/config.php';
+
+chdir(__DIR__);
+
+$root = __DIR__ . '/';
+
+$template = file_get_contents("${root}/Dockerfile");
+
+foreach ($dockerConfig as $cfg) {
+    $image = $cfg->tag;
+    $dir = $cfg->dir;
+
+    if (!is_dir($root . $dir)) {
+        passthru(sprintf(
+            'mkdir -p %s',
+            "{$root}{$dir}"
+        ));
+    }
+
+  file_put_contents(
+      $root . $dir . '/Dockerfile',
+      preg_replace(
+          '/^FROM ([^\s]+)$/m',
+          "FROM wordpress:$image",
+          $template
+      )
+  );
+}
+
+foreach ($dockerConfig as $cfg) {
+    $image = $cfg->tag;
+    $dir = $cfg->dir;
+
+    echo "Building ${imageName}:${image}";
+
+    passthru(sprintf(
+        'docker build -t %s -f %s %s',
+        escapeshellarg("${imageName}:${image}"),
+        escapeshellarg("${root}${dir}/Dockerfile"),
+        escapeshellarg("$root")
+    ));
+}
+
+echo "Pushing images...";
+
+passthru(sprintf(
+    'docker push %s',
+    escapeshellarg($imageName)
+));

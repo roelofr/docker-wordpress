@@ -1,0 +1,28 @@
+#!/usr/bin/env php
+<?php
+
+require_once __DIR__ . '/config.php';
+
+$hubUser = getenv('DOCKER_HUB_USER');
+$hubPass = getenv('DOCKER_HUB_PASS');
+
+if (empty($hubUser) || empty($hubPass)) {
+    echo "No login credentials for Docker Hub present";
+    exit(1);
+}
+
+passthru(sprintf(
+    'docker login --username %s --password %s',
+    escapeshellarg($hubUser),
+    escapeshellarg($hubPass)
+), $res);
+if ($res !== 0) {
+    exit($res);
+}
+
+passthru(sprintf(
+    'docker push %s',
+    escapeshellarg($imageName)
+), $res);
+
+exit($res);

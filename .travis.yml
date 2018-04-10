@@ -1,0 +1,21 @@
+# vim: set et ts=2 sw=2 :
+language: php
+services: docker
+
+script:
+  - ./
+
+php:
+  - 7.2
+
+script:
+  - ./create-config
+
+after_script:
+  - docker images
+
+deploy:
+  provider: script
+  script: ./docker-push
+  on:
+    branch: master
