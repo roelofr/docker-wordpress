@@ -7,7 +7,7 @@ WordPress with wp-cli
 
 ## Images
 
-The following images are available, which are all based on the [`wordpress`][wp] repository:
+The following images are available, which are all based on the [`wordpress`][wordpress] repository:
 
  - **PHP 7.2**
    - `php7.2-apache`
