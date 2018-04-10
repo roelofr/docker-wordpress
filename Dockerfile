@@ -1,5 +1,5 @@
 # Configuration file for Docker
-FROM IMAGE
+FROM wordpress
 
 # Install wp-cli
 RUN curl \

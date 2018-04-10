@@ -9,10 +9,10 @@ WordPress with wp-cli
 
 The following images are available, which are all based on the [`wordpress`][wordpress] repository:
 
- - **PHP 7.2**
-   - `php7.2-apache`
-   - `php7.2-fpm`
-   - `php7.2-fpm-alpine`
+ - **PHP 7.2** (the default version)
+   - `php7.2-apache`, `apache` and `latest`
+   - `php7.2-fpm` and `fpm`
+   - `php7.2-fpm-alpine` and `fpm-alpine`
  - **PHP 7.1**
    - `php7.1-apache`
    - `php7.1-fpm`

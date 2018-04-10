@@ -32,3 +32,8 @@ foreach ($webEngines as $engine) {
         'dir' => "latest/${engine}"
     ];
 }
+
+$dockerConfig[] = (object)[
+    'tag' => 'latest',
+    'dir' => 'latest/default'
+];
