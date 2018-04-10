@@ -1,7 +1,7 @@
 # WordPress with WP-CLI
 
-![Docker Automated build status](https://img.shields.io/docker/build/roelofr/wordpress.svg)
-![Docker Automated build](https://img.shields.io/docker/automated/roelofr/wordpress.svg)
+![Travis build status](https://img.shields.io/travis/github/roelofr/docker-wordpress.svg)
+![Docker pulls](https://img.shields.io/docker/pulls/roelofr/wordpress.svg)
 
 WordPress with wp-cli
 
