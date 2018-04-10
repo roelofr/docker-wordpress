@@ -9,13 +9,13 @@ php:
   - 7.2
 
 script:
-  - ./create-config
+  - ./docker-build
 
 after_script:
   - docker images
 
 deploy:
   provider: script
-  script: ./docker-push
+  script: ./docker-deploy
   on:
     branch: master
